@@ -5,8 +5,8 @@ A responsive, mobile-first Angular application that tracks real-time cryptocurre
 
 ### Key Features & Architectural Decisions
 - **Modern State Management:** Implemented using the latest NgRx standards (`createFeature`, `createActionGroup`) to strictly eliminate boilerplate while maintaining robust, synchronous Redux state patterns.
-- **Mobile-First UI (Tailwind CSS):** Features a complex, fully responsive data table utilizing a "Sticky Super-Column" approach. This ensures vital information (Logo, Name, Price, Remove button) remains visible while horizontally scrolling through rich market data on smaller screens.
-- **Performance Optimized (API Limits):** Adhering to the "avoid over-engineering" directive and respecting CoinGecko's Free Tier rate limits, the app performs a single fetch of the top 100 coins. Search and pagination are cleanly handled client-side to provide a lightning-fast UX without triggering `429 Too Many Requests` API errors.
+- **Mobile-First UI (Tailwind CSS):** 
+- **Performance Optimized (API Limits):** respecting CoinGecko's Free Tier rate limits, the app performs a single fetch of the top 100 coins. Search and pagination are cleanly handled client-side to provide a lightning-fast UX without triggering `429 Too Many Requests` API errors.
 - **Local Storage Persistence:** NgRx automatically syncs favorite selections with the browser's `localStorage` so the user's dashboard survives page refreshes.
 - **Automated Testing:** Unit tests are configured using **Vitest** for blazing-fast execution.
 - **CI/CD Ready:** Includes a GitHub Actions pipeline (`ci.yml`) to automatically run the test suite on every push.
