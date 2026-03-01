@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { RouterLink } from '@angular/router';
@@ -11,10 +11,14 @@ import { CryptoActions } from '../../store/crypto.actions';
   imports: [CommonModule, RouterLink],
   templateUrl: './favorites.html',
 })
-export class Favorites {
+export class Favorites implements OnInit {
   private store = inject(Store);
 
   favoriteCoins$ = this.store.select(selectFavoriteCoins);
+
+  ngOnInit() {
+    this.store.dispatch(CryptoActions.loadCoins());
+  }
 
   toggleFavorite(id: string) {
     this.store.dispatch(CryptoActions.toggleFavorite({ id }));
