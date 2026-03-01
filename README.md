@@ -1,59 +1,76 @@
-# CryptoTracker
+# Cryptocurrency Price Tracker
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.0.
+## Project Overview
+A responsive, mobile-first Angular application that tracks real-time cryptocurrency prices. Users can browse the top cryptocurrencies, search for specific assets, and curate a personalized dashboard of favorites. 
 
-## Development server
+### Key Features & Architectural Decisions
+- **Modern State Management:** Implemented using the latest NgRx standards (`createFeature`, `createActionGroup`) to strictly eliminate boilerplate while maintaining robust, synchronous Redux state patterns.
+- **Mobile-First UI (Tailwind CSS):** Features a complex, fully responsive data table utilizing a "Sticky Super-Column" approach. This ensures vital information (Logo, Name, Price, Remove button) remains visible while horizontally scrolling through rich market data on smaller screens.
+- **Performance Optimized (API Limits):** Adhering to the "avoid over-engineering" directive and respecting CoinGecko's Free Tier rate limits, the app performs a single fetch of the top 100 coins. Search and pagination are cleanly handled client-side to provide a lightning-fast UX without triggering `429 Too Many Requests` API errors.
+- **Local Storage Persistence:** NgRx automatically syncs favorite selections with the browser's `localStorage` so the user's dashboard survives page refreshes.
+- **Automated Testing:** Unit tests are configured using **Vitest** for blazing-fast execution.
+- **CI/CD Ready:** Includes a GitHub Actions pipeline (`ci.yml`) to automatically run the test suite on every push.
 
-To start a local development server, run:
+## Tech Stack
+- **Framework:** Angular 21 (Standalone Components)
+- **State Management:** NgRx Store & Effects
+- **Styling:** Tailwind CSS v4
+- **Testing:** Vitest & Angular TestBed
+- **API:** CoinGecko API (Free Tier)
 
-```bash
-ng serve
-```
+---
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## 🛠 Prerequisites
 
-## Code scaffolding
+Before running this project, ensure you have the following installed on your machine:
+- **Node.js** (v18 or v20 LTS recommended)
+- **npm** (v9 or higher)
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+---
 
-```bash
-ng generate component component-name
-```
+## 🚀 Setup & Installation
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+**1. Clone the repository**
 
-```bash
-ng generate --help
-```
+git clone <YOUR_GITHUB_REPO_URL>
+cd crypto-tracker
 
-## Building
+**2. Install dependencies**
 
-To build the project run:
+npm install
 
-```bash
-ng build
-```
+**2. Configure the Environment Variables**
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+This application uses the CoinGecko API, which requires a Demo API Key.
 
-## Running unit tests
+Create the environments folder and files if they do not exist:
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+mkdir -p src/environments
+touch src/environments/environment.ts
+touch src/environments/environment.development.ts
 
-```bash
-ng test
-```
+Open src/environments/environment.development.ts (and environment.ts if building for production) and add your API key:
 
-## Running end-to-end tests
+export const environment = {
+  production: false,
+  x_cg_demo_api_key: 'YOUR_COINGECKO_API_KEY_HERE' 
+};
 
-For end-to-end (e2e) testing, run:
+## 💻 Running the Application
 
-```bash
-ng e2e
-```
+To start the local development server, run:
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+npm start
 
-## Additional Resources
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Or use the standard Angular CLI: ng serve
+
+Once compiled, navigate your browser to: http://localhost:4200/
+
+## 🧪 Running Automated Tests
+
+This project uses Vitest for high-performance unit testing, mocking the NgRx store to test components in isolation.
+
+To execute the test suite, run:
+
+npm run test
