@@ -43,18 +43,7 @@ npm install
 
 This application uses the CoinGecko API, which requires a Demo API Key.
 
-Create the environments folder and files if they do not exist:
-
-mkdir -p src/environments
-touch src/environments/environment.ts
-touch src/environments/environment.development.ts
-
-Open src/environments/environment.development.ts (and environment.ts if building for production) and add your API key:
-
-export const environment = {
-  production: false,
-  x_cg_demo_api_key: 'YOUR_COINGECKO_API_KEY_HERE' 
-};
+Normally I wouldn't commit it something like that but as it's not important, I did.
 
 ## 💻 Running the Application
 
