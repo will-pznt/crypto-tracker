@@ -32,7 +32,7 @@ Before running this project, ensure you have the following installed on your mac
 
 **1. Clone the repository**
 
-git clone <YOUR_GITHUB_REPO_URL>
+git clone https://github.com/will-pznt/crypto-tracker
 cd crypto-tracker
 
 **2. Install dependencies**
